@@ -61,17 +61,17 @@ public class WertpapiereDatenControl {
 
 				@Override
 			    public void executeQuery(String query) throws SQLException, ApplicationException {
-						super.executeQuery(query);
-						System.out.println("ItemCount: " + getItemCount());
-						System.out.println("Seriescount" + getSeriesCount());
-						for (int i = 0; i < getItemCount(); i++) {
-							//	ArrayList row = (ArrayList) rows.get(i);
-						}
+			        super.executeQuery(query);
+			        System.out.println("ItemCount: " + getItemCount());
+			        System.out.println("Seriescount" + getSeriesCount());
+			        for (int i = 0; i < getItemCount(); i++) {
+			        //	ArrayList row = (ArrayList) rows.get(i);
+			        }
 
-						//		        return (Number) row.get(seriesIndex + 1);
+	//		        return (Number) row.get(seriesIndex + 1);
 
 			    }
-
+				
 				@Override
 				public Number getX(int seriesIndex, int itemIndex) {
 					// TODO Auto-generated method stub
@@ -534,7 +534,7 @@ public class WertpapiereDatenControl {
 			BigDecimal einprozent = kurs.divide(new BigDecimal("100.0"), 10, RoundingMode.HALF_UP);
 			BigDecimal performance = refKurs.subtract(kurs).divide(einprozent, 10, RoundingMode.HALF_UP);
 			//					(refkurs - kurs)/(kurs/100)
-			return performance.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "%";
+			return performance.setScale(2, RoundingMode.HALF_UP).toPlainString() + "%";
 		}
 	}
 
