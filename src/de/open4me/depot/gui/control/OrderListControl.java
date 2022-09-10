@@ -12,7 +12,6 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
 import de.open4me.depot.Settings;
-import de.open4me.depot.gui.action.OrderList;
 import de.open4me.depot.gui.action.UmsatzEditorAction;
 import de.open4me.depot.gui.menu.OrderListMenu;
 import de.open4me.depot.gui.parts.PrintfColumn;
