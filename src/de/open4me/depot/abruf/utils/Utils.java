@@ -467,7 +467,7 @@ public class Utils {
 			} else if (www && DepotAbrufFabrik.getDepotAbruf(k) == null) {
 				m.setAttribute("zugangsart", "kein Support für diese Bank via Screen Scraping. Ggf. auf HBCI wechseln");
 			} else  if (hbci && DepotAbrufFabrik.getDepotAbrufHBCI(k) != null) {
-				m.setAttribute("zugangsart", "HBCI mit Screen Scraping");
+				m.setAttribute("zugangsart", "HBCI mit Screen Scraping oder Api Nutzung");
 				m.setAttribute("abruf", DepotAbrufFabrik.getDepotAbrufHBCI(k));
 			} else if (hbci) {
 				m.setAttribute("zugangsart", "nur HBCI");
