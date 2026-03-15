@@ -14,10 +14,15 @@ import de.willuhn.util.ApplicationException;
 public class Sicherheitsabfrage extends AbstractDialog<Boolean>{
 
 	boolean jaIchWill = false;
-	private String message = "Wollen Sie wirklich die Einträge löschen?";
+	private final String message;
 
 	public Sicherheitsabfrage() {
+		this("Wollen Sie wirklich die Einträge löschen?");
+	}
+
+	public Sicherheitsabfrage(String message) {
 		super(AbstractDialog.POSITION_CENTER, false);
+		this.message = message;
 		setTitle(i18n.tr("Sicherheitsabfrage"));
 		setSize(480, SWT.DEFAULT);
 		setSideImage(SWTUtil.getImage("dialog-warning-large.png"));
