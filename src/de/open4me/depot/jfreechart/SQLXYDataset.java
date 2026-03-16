@@ -29,8 +29,8 @@ import de.willuhn.util.ApplicationException;
 public class SQLXYDataset extends AbstractXYDataset
 implements TableXYDataset, RangeInfo {
 
-	/** The database connection. */
-	private transient Connection connection;
+	// /** The database connection. */
+	// private transient Connection connection;
 
 	/** Column names. */
 	private String[] columnNames = {};
@@ -49,7 +49,7 @@ implements TableXYDataset, RangeInfo {
 	 * Creates a new JDBCXYDataset (initially empty) with no database
 	 * connection.
 	 */
-	private SQLXYDataset() {
+	public SQLXYDataset() {
 		this.rows = new ArrayList<ArrayList<Object>>();
 	}
 
