@@ -10,7 +10,6 @@ import java.net.URISyntaxException;
 import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -151,8 +150,8 @@ public class UpdateStock implements BackgroundTask {
 			throw new ApplicationException("Fehler beim Abruf der Kurse. Bitte nochmal aktualisieren und Einstellungen neu vornehmen!");
 		}
 		Logger.debug("Anbieter für Kursaktualisierung: " + base.getName());
-		Calendar today = Calendar.getInstance();
-		base.prepare(searchterm, 2000, 1, 1, today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
+		Date d = new Date();
+		base.prepare(searchterm, 2000, 1, 1, d.getYear() + 1900, d.getMonth() + 1, d.getDate());
 		try( PreparedSQL preparedSQL = SQLUtils.getPreparedSQL("select value from depotviewer_cfgupdatestock where `wpid`= ? and `key` = ?");) {
 			PreparedStatement getCfg = preparedSQL.prest;
 			getCfg.setString(1, wpid);
@@ -215,8 +214,8 @@ public class UpdateStock implements BackgroundTask {
 		if (saveSettings) {
 			doSaveAnbieter(wertpapier.getAttribute("id").toString(), base.getName());
 		}
-		Calendar today = Calendar.getInstance();
-		base.prepare(searchterm, 2000, 1, 1, today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
+		Date d = new Date();
+		base.prepare(searchterm, 2000, 1, 1, d.getYear() + 1900, d.getMonth() + 1, d.getDate());
 		while (base.hasMoreConfig()) {
 			if (abort) {
 				return null;

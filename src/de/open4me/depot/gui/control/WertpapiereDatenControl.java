@@ -414,12 +414,12 @@ public class WertpapiereDatenControl {
 
 	private List<GenericObjectHashMap> calcKennzahlen2(GenericObjectSQL[] selection) {
 		List<GenericObjectHashMap> zeilen = new ArrayList<GenericObjectHashMap>();
-		Calendar today = Calendar.getInstance();
+		Date now = new Date();
 		try {
 			// Legende hinzufügen
 			for (int i = 0; i < 10; i++) {
 				GenericObjectHashMap zeile = new GenericObjectHashMap();
-				int jahr = today.get(Calendar.YEAR) - (i);
+				int jahr = now.getYear() + 1900 - (i);
 				zeile.setAttribute("zeitraum", "Jahr " + jahr);
 				zeilen.add(zeile);
 			}
@@ -431,7 +431,7 @@ public class WertpapiereDatenControl {
 				BigDecimal refKurs = getReferenzKurs(wpid, 10);
 
 				for (int i = 0; i < 10; i++) {
-						String out = getPerformanceFuerJahr(today.get(Calendar.YEAR) - (i), wpid);
+						String out = getPerformanceFuerJahr(now.getYear() + 1900 - (i), wpid);
 						zeilen.get(i).setAttribute(wpid,  out);
 				} // For Zeitraum
 			} // For WP
