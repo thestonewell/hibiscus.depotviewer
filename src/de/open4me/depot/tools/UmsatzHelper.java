@@ -1,6 +1,7 @@
 package de.open4me.depot.tools;
 
 import java.math.BigDecimal;
+
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -13,9 +14,12 @@ import de.willuhn.datasource.rmi.DBIterator;
 import de.willuhn.datasource.rmi.DBService;
 import de.willuhn.jameica.hbci.rmi.DBProperty;
 import de.willuhn.jameica.hbci.server.DBPropertyUtil.Prefix;
+import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.hbci.server.Value;
 import de.willuhn.jameica.hbci.server.VerwendungszweckUtil;
 import de.willuhn.util.ApplicationException;
+import de.willuhn.jameica.hbci.messaging.ImportMessage;
+
 
 public class UmsatzHelper {
 
@@ -91,6 +95,8 @@ public class UmsatzHelper {
 	    hu.store();
 	    
 	    hu.setMeta("depotviewer_id", u.getID()); // Meta-Daten werden getrennt vom eigentlichen Umsatz (nicht mit store()) gespeichert.
+		Application.getMessagingFactory().sendMessage(new ImportMessage(hu));
+
 	}
 	
 	/**

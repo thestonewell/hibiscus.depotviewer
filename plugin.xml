@@ -48,4 +48,10 @@
     </item>
   </menu>
 
+<messaging>
+  <consumer queue="depotviewer.transaction" class="de.open4me.depot.messageconsumer.TransactionMessageConsumer" />
+  <consumer queue="depotviewer.portfolio" class="de.open4me.depot.messageconsumer.PortfolioMessageConsumer" />
+  
+</messaging>
+
 </plugin>

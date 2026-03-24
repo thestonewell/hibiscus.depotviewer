@@ -265,6 +265,17 @@ public class Utils {
 		SQLUtils.exec("delete from depotviewer_bestand where kontoid = " + konto.getID());
 	}
 
+	/**
+	 * Löscht für ein Konto den gesamten Bestand
+	 * 
+	 * @param konto Konto
+	 * @throws RemoteException
+	 * @throws ApplicationException
+	 */
+	public static void clearBestand(Number kontoid) throws RemoteException, ApplicationException {
+		markRecalc(null);
+		SQLUtils.exec("delete from depotviewer_bestand where kontoid = " + kontoid);
+	}
 
 	// Zerlegt einen String intelligent in max. 27 Zeichen lange Stücke
 	public static String[] parse(String line)
