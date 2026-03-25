@@ -61,6 +61,7 @@ public class UmsatzHelper {
 
 			hu.setKommentar("Automatisch erzeugt von DepotViewer");
 			hu.setSaldo(0);
+			Application.getMessagingFactory().sendMessage(new ImportMessage(hu));
 		}
 		
 		BigDecimal gegenwert = u.getKosten().negate();
@@ -95,7 +96,6 @@ public class UmsatzHelper {
 	    hu.store();
 	    
 	    hu.setMeta("depotviewer_id", u.getID()); // Meta-Daten werden getrennt vom eigentlichen Umsatz (nicht mit store()) gespeichert.
-		Application.getMessagingFactory().sendMessage(new ImportMessage(hu));
 
 	}
 	
