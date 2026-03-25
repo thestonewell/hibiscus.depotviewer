@@ -483,7 +483,7 @@ public class Utils {
 			} else if (hbci) {
 				m.setAttribute("zugangsart", "nur HBCI");
 			} else {
-				continue;
+				m.setAttribute("zugangsart", "Unterstützung ggf. durch andere Plugins");
 			}
 			list.add(m);
 		}
