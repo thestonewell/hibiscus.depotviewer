@@ -14,12 +14,12 @@ Die Zugangsart ist auf HBCI zusetzen, nicht auf "Depot Viewer".
 
 | Bank | Unterstützung Bestand (HKWPD)| Unterstützung Umsätze (HKWDU) | Stand | Anmerkungen |
 | ---- | --------------------- | -------------------- | ----------- | ----- |
-| DKB | ja | ja | 1Q 2017 | |
+| DKB | ja | ja | 2Q 2026 | Die DKB stellt nur Transaktionen der letzten 14 Tage zur Verfügung. Längere Pausen beim Abruf führen zu Lücken |
 | Cortal Consors | ja | nicht via HBCI | 1Q2017 | Für diese Bank wurde eine Erweiterung für den Abruf der Umsatz geschrieben. Unter Einstellungen sind deshalb die Zugangsdaten für den Webzugang zu hinterlegen |
-| Comdirect | ja | Nein | 4Q 2014 | |
+| Comdirect | ja | Nein | 2Q 2026 | |
 | 1822direkt | ja | Nein | 4Q 2014 | |
 | ING-Diba | ja | Nein | 1Q 2017 | |
-
+| FLATEX | ja | ja | 1Q 2026 | |
 Nicht unterstützte Banken
 
 | Bank | Stand | Anmerkungen |
