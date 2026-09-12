@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 
 import de.open4me.depot.gui.action.AddWertpapierAction;
 import de.open4me.depot.gui.action.DeleteWertpapierAction;
+import de.open4me.depot.gui.action.KurseLoeschenAction;
 import de.open4me.depot.gui.action.ModifyWertpapierAction;
 import de.open4me.depot.gui.action.WertpapiereAktualisierenAction;
 import de.open4me.depot.gui.control.WertpapiereControl;
@@ -56,9 +57,9 @@ public class WertpapierMenu extends ContextMenu
 		addItem(ContextMenuItem.SEPARATOR);
 		addItem(new ContextMenuItem("Aktualisieren...", new WertpapiereAktualisierenAction(false)));
 		addItem(new ContextMenuItem("Aktualisieren (Einstellungen wählen)...", new WertpapiereAktualisierenAction(true)));
+		addItem(new CheckedContextMenuItem("Alle Kurse löschen", new KurseLoeschenAction()));
 		addItem(ContextMenuItem.SEPARATOR);
 		addMenu(new OpenInBrowserMenu("Webseiten (allgemein)", allgseiten));
 		addMenu(new OpenInBrowserMenu("Webseiten (Fonds)", fondsseiten));
 	}
 }
-

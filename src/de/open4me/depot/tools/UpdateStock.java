@@ -159,9 +159,8 @@ public class UpdateStock implements BackgroundTask {
 		KursProviderErgebnis result = provider.abrufen(context);
 		if (abort) return;
 		Abruf abruf = new Abruf(provider, result.getKurse(), saveSettings, result.getKonfiguration());
-		boolean replaceAll = provider.ersetztBestandBeimWechsel() && !provider.getId().equals(savedProvider);
 		monitor.setStatusText("Speichern");
-		saveStockData(wertpapier, abruf, replaceAll);
+		saveStockData(wertpapier, abruf);
 		monitor.setStatusText("Fertig mit " + searchterm);
 		Application.getMessagingFactory().sendMessage(new KursUpdatesMsg(wpid));
 	}
@@ -185,24 +184,10 @@ public class UpdateStock implements BackgroundTask {
 	}
 
 	// Speichert Kursdaten und eine optional geänderte Anbieter-Konfiguration atomar.
-	private static void saveStockData(GenericObjectSQL wertpapier, Abruf abruf, boolean replaceAll) throws Exception {
+	private static void saveStockData(GenericObjectSQL wertpapier, Abruf abruf) throws Exception {
 		try(Connection conn = SQLUtils.getConnection()) {
 			conn.setAutoCommit(false);
 			try {
-				if (replaceAll)
-				{
-					try (PreparedStatement del = conn.prepareStatement("delete from depotviewer_kurse where wpid = ?"))
-					{
-						del.setString(1, wertpapier.getID());
-						del.executeUpdate();
-					}
-					try (PreparedStatement del = conn.prepareStatement("delete from depotviewer_kursevent where wpid = ?"))
-					{
-						del.setString(1, wertpapier.getID());
-						del.executeUpdate();
-					}
-				}
-
 				try(PreparedStatement del = conn.prepareStatement("delete from depotviewer_kurse where wpid = ? and kursdatum = ?")) {
 					for (Kurs kurs : abruf.result.getKurse()) {
 						del.setString(1, wertpapier.getID());

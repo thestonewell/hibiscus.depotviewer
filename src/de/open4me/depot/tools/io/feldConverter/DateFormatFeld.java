@@ -8,7 +8,7 @@ import de.open4me.depot.tools.io.feldConverter.options.FeldConverterText;
 
 public class DateFormatFeld extends FeldConverter<Date> {
 
-	private FeldConverterText opt = new FeldConverterText("dateformat", "Datumsformat");
+	private FeldConverterText opt = new FeldConverterText("dateformat", "Datumsformat (Beispiel: 2026-12-31 -- yyyy-MM-dd)");
 	private SimpleDateFormat df;
 	public DateFormatFeld() {
 		super("Datumsformat (yyyy-MM-dd)");

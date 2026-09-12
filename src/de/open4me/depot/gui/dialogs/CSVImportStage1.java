@@ -120,16 +120,14 @@ public class CSVImportStage1 extends AbstractDialog
 	private void reload() throws RemoteException {
 		this.getError().setValue("");
 		boolean enable = true;
-		list.clear();
-		header.clear();
 		try
 		{
 			SWTUtil.disposeChildren(this.comp);
 			comp.setLayoutData(new GridData(GridData.FILL_BOTH));
 			this.comp.setLayout(new GridLayout());
 			tool.load();
-			list = tool.getList();
-			header = tool.getHeader();
+			list = new ArrayList<GenericObjectHashMap>(tool.getList());
+			header = new ArrayList<String>(tool.getHeader());
 			if (tool.isIgnoredLines()) {
 				getError().setValue("Die mit X markierten Zeilen werden ignoriert.");
 			}

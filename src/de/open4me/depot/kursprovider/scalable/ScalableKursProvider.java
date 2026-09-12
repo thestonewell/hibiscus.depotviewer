@@ -50,6 +50,5 @@ public final class ScalableKursProvider implements KursProvider
 	}
 
 	@Override public boolean istAbrufbereit() { return provider.isConnected(); }
-	@Override public boolean ersetztBestandBeimWechsel() { return true; }
 	@Override public void close() { provider.close(); }
 }

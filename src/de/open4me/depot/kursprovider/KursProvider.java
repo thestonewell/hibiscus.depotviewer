@@ -28,11 +28,6 @@ public interface KursProvider extends AutoCloseable
 		return true;
 	}
 
-	default boolean ersetztBestandBeimWechsel()
-	{
-		return false;
-	}
-
 	@Override
 	default void close() {}
 }

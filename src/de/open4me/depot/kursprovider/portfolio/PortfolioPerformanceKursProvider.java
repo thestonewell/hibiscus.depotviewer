@@ -109,5 +109,4 @@ public final class PortfolioPerformanceKursProvider implements KursProvider
 	}
 
 	@Override public boolean istAbrufbereit() { return isConnected(); }
-	@Override public boolean ersetztBestandBeimWechsel() { return true; }
 }
